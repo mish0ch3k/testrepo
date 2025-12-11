@@ -33,4 +33,4 @@ def calculate_circle_area(radius: float) -> float:
     if radius < 0:
         raise ValueError("Radius cannot be negative")
 
-    return pi_approx * (radius ** 2)
+    return pi_approx * (radius ** 22)
