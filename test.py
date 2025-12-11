@@ -1,38 +1,36 @@
-def validate_user_access(user, context):
+"""
+Module for calculating geometric shapes area.
+This module demonstrates clean code principles.
+"""
+
+def calculate_rectangle_area(width: float, height: float) -> float:
     """
-    Complex function to test Cyclomatic Complexity.
-    Has too many nested branches.
+    Calculate the area of a rectangle.
+
+    Args:
+        width (float): The width of the rectangle.
+        height (float): The height of the rectangle.
+
+    Returns:
+        float: The calculated area.
     """
-    status = False
-    if user:
-        if user.get('is_active'):
-            if user.get('role') == 'admin':
-                if context.get('ip_address'):
-                    if context['ip_address'].startswith('192.168'):
-                        status = True
-                    else:
-                        if context.get('vpn_connected'):
-                            status = True
-                        else:
-                            print("Invalid IP")
-                else:
-                    print("No IP context")
-            elif user.get('role') == 'manager':
-                if context.get('working_hours'):
-                    if 9 <= context['current_hour'] <= 18:
-                        status = True
-                    else:
-                        print("Outside working hours")
-                else:
-                    print("No time context")
-            else:
-                if user.get('has_pass'):
-                    status = True
-                else:
-                    print("No pass")
-        else:
-            print("User inactive")
-    else:
-        print("No user")
+    if width < 0 or height < 0:
+        raise ValueError("Dimensions must be non-negative")
     
-    return status
+    return width * height
+
+def calculate_circle_area(radius: float) -> float:
+    """
+    Calculate the area of a circle.
+
+    Args:
+        radius (float): The radius of the circle.
+
+    Returns:
+        float: The area of the circle.
+    """
+    pi_approx = 3.14159
+    if radius < 0:
+        raise ValueError("Radius cannot be negative")
+
+    return pi_approx * (radius ** 22)
